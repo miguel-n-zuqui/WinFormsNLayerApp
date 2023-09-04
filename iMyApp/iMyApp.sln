@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsApp", "Apresentacao
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Negocio", "Negocio\Negocio\Negocio.csproj", "{B14BD249-595D-4826-9C5B-DD467E2069B9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Database", "Infra\Database\Database.csproj", "{EC8C3DD2-5A76-43FC-B4A3-BB80330E365C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B14BD249-595D-4826-9C5B-DD467E2069B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B14BD249-595D-4826-9C5B-DD467E2069B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B14BD249-595D-4826-9C5B-DD467E2069B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC8C3DD2-5A76-43FC-B4A3-BB80330E365C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC8C3DD2-5A76-43FC-B4A3-BB80330E365C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC8C3DD2-5A76-43FC-B4A3-BB80330E365C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC8C3DD2-5A76-43FC-B4A3-BB80330E365C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -34,6 +40,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{D6CB5E16-F466-4284-A224-99F56FD98A33} = {2DE9A3B3-A179-403C-9B24-DA1097CFACA9}
 		{B14BD249-595D-4826-9C5B-DD467E2069B9} = {0A74B464-A633-4481-83D1-2FB6C2DBDE81}
+		{EC8C3DD2-5A76-43FC-B4A3-BB80330E365C} = {7ED37AF7-5451-403D-93CB-08DA1242AF71}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DAE85CE4-00A6-43B6-8F0F-CE0740EB5C3F}
