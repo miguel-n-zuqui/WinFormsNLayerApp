@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Negocio.Comum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,15 +7,9 @@ using System.Threading.Tasks;
 
 namespace Negocio.Entidades
 {
-    public class Cargo
+    public class Cargo : EntidadeBase
     {
-
-        public int Id { get; set; }
         public string Nome { get; set; }
-
-        public Cargo(string nome)
-        {
-            Nome = nome;
-        }
+        public bool Status { get; set; }
     }
 }
