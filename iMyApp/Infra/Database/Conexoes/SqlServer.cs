@@ -10,7 +10,7 @@ namespace Database.Conexoes
     {
         internal static string StrConexaoHardCore()
         {
-            return "Data Source=.\\SQLEXPRESS;Initial Catalog=iMyApp;User ID=sa;Password=sql2022";
+            return  "Server=.\\SQLEXPRESS;Database=iMyApp;User Id=sa;Password=sql2022;Trusted_Connection=False; TrustServerCertificate=True;"; 
         }
     }
 }

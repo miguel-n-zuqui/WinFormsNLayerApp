@@ -1,5 +1,4 @@
-﻿using Negocio.Entidades.Comum;
-using Negocio.Entidades;
+﻿using Negocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

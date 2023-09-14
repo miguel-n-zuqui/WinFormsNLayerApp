@@ -1,3 +1,4 @@
+using WinFormsApp.Telas.Cargos;
 using WinFormsApp.Telas.Clientes;
 
 namespace WinFormsApp
@@ -13,7 +14,7 @@ namespace WinFormsApp
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new ClientesCadastrar());
+            Application.Run(new CargoView());
         }
     }
 }
