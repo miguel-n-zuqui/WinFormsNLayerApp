@@ -33,11 +33,11 @@
             chkStatus = new CheckBox();
             txtCargo = new TextBox();
             btnNovoCargo = new Button();
-            grupoBoxNovoCargo = new DataGridView();
+            gvCargos = new DataGridView();
             label1 = new Label();
             btnRecarregar = new Button();
             grupoBoxCargo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)grupoBoxNovoCargo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvCargos).BeginInit();
             SuspendLayout();
             // 
             // grupoBoxCargo
@@ -97,22 +97,25 @@
             btnNovoCargo.UseVisualStyleBackColor = false;
             btnNovoCargo.Click += btnNovoCargo_Click;
             // 
-            // grupoBoxNovoCargo
+            // gvCargos
             // 
-            grupoBoxNovoCargo.BackgroundColor = SystemColors.GradientActiveCaption;
-            grupoBoxNovoCargo.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grupoBoxNovoCargo.GridColor = SystemColors.GradientActiveCaption;
-            grupoBoxNovoCargo.Location = new Point(12, 153);
-            grupoBoxNovoCargo.Name = "grupoBoxNovoCargo";
-            grupoBoxNovoCargo.RowTemplate.Height = 25;
-            grupoBoxNovoCargo.Size = new Size(776, 272);
-            grupoBoxNovoCargo.TabIndex = 4;
+            gvCargos.AllowUserToAddRows = false;
+            gvCargos.BackgroundColor = SystemColors.GradientActiveCaption;
+            gvCargos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gvCargos.GridColor = SystemColors.GradientActiveCaption;
+            gvCargos.Location = new Point(12, 153);
+            gvCargos.Name = "gvCargos";
+            gvCargos.ReadOnly = true;
+            gvCargos.RowTemplate.Height = 25;
+            gvCargos.Size = new Size(776, 272);
+            gvCargos.TabIndex = 4;
+            gvCargos.CellMouseClick += gvCargos_CellMouseClick;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(40, 115);
+            label1.Location = new Point(12, 125);
             label1.Name = "label1";
             label1.Size = new Size(146, 25);
             label1.TabIndex = 5;
@@ -124,12 +127,13 @@
             btnRecarregar.BackColor = Color.White;
             btnRecarregar.FlatStyle = FlatStyle.Flat;
             btnRecarregar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            btnRecarregar.Location = new Point(638, 111);
+            btnRecarregar.Location = new Point(625, 109);
             btnRecarregar.Name = "btnRecarregar";
-            btnRecarregar.Size = new Size(115, 29);
+            btnRecarregar.Size = new Size(115, 41);
             btnRecarregar.TabIndex = 3;
             btnRecarregar.Text = "Recarregar";
             btnRecarregar.UseVisualStyleBackColor = false;
+            btnRecarregar.Click += btnRecarregar_Click;
             // 
             // CargoView
             // 
@@ -139,14 +143,15 @@
             ClientSize = new Size(800, 450);
             Controls.Add(btnRecarregar);
             Controls.Add(label1);
-            Controls.Add(grupoBoxNovoCargo);
+            Controls.Add(gvCargos);
             Controls.Add(btnNovoCargo);
             Controls.Add(grupoBoxCargo);
             Name = "CargoView";
             Text = "CargoView";
+            Load += CargoView_Load;
             grupoBoxCargo.ResumeLayout(false);
             grupoBoxCargo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)grupoBoxNovoCargo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvCargos).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -163,7 +168,7 @@
         private CheckBox chkStatus;
         private TextBox txtCargo;
         private Button btnNovoCargo;
-        private DataGridView grupoBoxNovoCargo;
+        private DataGridView gvCargos;
         private Label label1;
         private Button btnRecarregar;
     }

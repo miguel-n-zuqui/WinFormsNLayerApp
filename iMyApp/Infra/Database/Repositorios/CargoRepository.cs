@@ -27,19 +27,19 @@ namespace Database.Repositorios
                  ,[AlteradoPor]
                  ,[AlteradoEm])
               VALUES
-                 (<@Nome,
-                 ,<@Status,
-                 ,<@CriadoEm, 
-                 ,<@CriadoPor,
-                 ,<@AlteradoPor,
-                 ,<@AlteradoEm)";
+                 (@Nome,
+                 @Status,
+                 @CriadoEm, 
+                 @CriadoPor,
+                 @AlteradoPor,
+                 @AlteradoEm)";
 
                 using ( var connection = new SqlConnection(SqlServer.StrConexaoHardCore()))
                 {
                     connection.Open();
                     var cmd = new SqlCommand(sql, connection);
 
-                    cmd.Parameters.AddWithValue("@nome", cargo.Nome);
+                    cmd.Parameters.AddWithValue("@Nome", cargo.Nome);
                     cmd.Parameters.AddWithValue("@Status", cargo.Status);
                     cmd.Parameters.AddWithValue("@CriadoEm", cargo.CriadoEm);
                     cmd.Parameters.AddWithValue("@CriadoPor", cargo.CriadoPor);
@@ -62,30 +62,27 @@ namespace Database.Repositorios
 
            
         }
-        public bool Atualizar(Cargo cargo)
+        public bool Atualizar(Cargo cargo,int id)
         {
             try
             {
 
-                var sql = @"            
-                UPDATE[dbo].[Cargo]
-                SET[Nome] = < Nome, varchar(100),>
-                 ,[Status] = < Status, bit,>
-                 ,[CriadoEm] = < CriadoEm, datetime,>
-                 ,[CriadoPor] = < CriadoPor, varchar(50),>
-                 ,[AlteradoPor] = < AlteradoPor, varchar(50),>
-                 ,[AlteradoEm] = < AlteradoEm, datetime,>
-                 WHERE < Search Conditions,,>";
+                var sql = @"UPDATE [dbo].[Cargo]
+                   SET [Nome] = @nome
+                  ,[Status] = @Status
+                  ,[AlteradoEm] = @AlteradoEm
+                  ,[AlteradoPor] = @AlteradoPor
+                   WHERE Id = @id";
 
                 using (var connection = new SqlConnection(SqlServer.StrConexaoHardCore()))
                 {
+                    connection.Open();
                     var cmd = new SqlCommand(sql, connection);
+                    cmd.Parameters.AddWithValue("@id", id);
                     cmd.Parameters.AddWithValue("@nome", cargo.Nome);
                     cmd.Parameters.AddWithValue("@Status", cargo.Status);
-                    cmd.Parameters.AddWithValue("@CriadoEm", cargo.CriadoEm);
-                    cmd.Parameters.AddWithValue("@CriadoPor", cargo.CriadoPor);
-                    cmd.Parameters.AddWithValue("@AlteradoPor", cargo.AlteradoPor);
                     cmd.Parameters.AddWithValue("@AlteradoEm", cargo.AlteradoEm);
+                    cmd.Parameters.AddWithValue("@AlteradoPor", cargo.AlteradoPor);
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;
                 }
@@ -93,9 +90,9 @@ namespace Database.Repositorios
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
 
         }
@@ -128,20 +125,16 @@ namespace Database.Repositorios
             }
 
         }
-        public DataTable ObterTodos(int cargoId)
+        public DataTable ObterTodos()
         {
-            var sql = @"";
+            var sql = @"SELECT [Id],[Nome],[Status],[AlteradoEm] FROM [dbo].[Cargo]";
             SqlDataAdapter dataAdapter = null;
             var dataTable = new DataTable();
             try
             {
-
-
-
-                
-
                 using (var connection = new SqlConnection(SqlServer.StrConexaoHardCore()))
                 {
+                    connection.Open();
                     var cmd = connection.CreateCommand();
                    
                     cmd.CommandText = sql;
