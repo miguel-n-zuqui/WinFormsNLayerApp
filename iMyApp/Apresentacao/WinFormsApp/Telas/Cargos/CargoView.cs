@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Button = System.Windows.Forms.Button;
 
 namespace WinFormsApp.Telas.Cargos
 {
@@ -29,36 +30,40 @@ namespace WinFormsApp.Telas.Cargos
         private void tbnSalvar_Click(object sender, EventArgs e)
         {
 
-            var novoCargo = new Cargo(txtCargo.Text, chkStatus.Checked);
-            var cargoRepository = new CargoRepository();
-            if (id > 0)
+            Button botao = sender as Button;
+
+            var nome = txtCargo.Text;
+            var status = chkStatus.Checked;
+            var novoCargo = new Cargo(nome, status);
+            var cargo = new CargoRepository();
+            switch (botao.Text)
             {
+                case "Cadastrar":
+                    {
+                        cargo.Inserir(novoCargo);
 
-                var atualizarCargo = new CargoRepository();
-                atualizarCargo.Atualizar(novoCargo, id);
-                MessageBox.Show("Cargo atualizado com sucesso");
-            }
-            else
-            {
-                var nome = txtCargo.Text;
-                var status = chkStatus.Checked;
+                        var resultado = cargo.Inserir(novoCargo);
 
-
-                var resultado = cargoRepository.Inserir(novoCargo);
-
-                txtCargo.Text = novoCargo.CriadoPor;
-
-                if (resultado)
-                {
-                    MessageBox.Show("Cargo cadastrado com sucesso");
-
-                }
-                else
-                {
-                    MessageBox.Show("Não foi possível cadastra o cargo");
-                }
-
-
+                        if (resultado)
+                        {
+                            MessageBox.Show("Cargo cadastrado com sucesso!!");
+                        }
+                        else
+                        {
+                            MessageBox.Show("Não foi possivel gravar o cargo!!");
+                        }
+                        //cadastar
+                        break;
+                    }
+                case "Salvar":
+                    {
+                        cargo.Atualizar(novoCargo, id);
+                        MessageBox.Show("Cargo alterado com sucesso!!");
+                        //cadastar
+                        break;
+                    }
+                default:
+                    break;
             }
 
         }

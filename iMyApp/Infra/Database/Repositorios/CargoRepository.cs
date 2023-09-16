@@ -184,7 +184,7 @@ namespace Database.Repositorios
                     {
                         lista.Add(reader.GetString(0).Trim());
                     }
-
+                    
                     return lista;
                 }
             }
