@@ -34,6 +34,7 @@
             txtCargo = new TextBox();
             btnNovoCargo = new Button();
             gvCargos = new DataGridView();
+            Delete = new DataGridViewButtonColumn();
             label1 = new Label();
             btnRecarregar = new Button();
             grupoBoxCargo.SuspendLayout();
@@ -84,6 +85,7 @@
             txtCargo.Name = "txtCargo";
             txtCargo.Size = new Size(388, 23);
             txtCargo.TabIndex = 0;
+            txtCargo.TextChanged += txtCargo_TextChanged;
             // 
             // btnNovoCargo
             // 
@@ -102,6 +104,7 @@
             gvCargos.AllowUserToAddRows = false;
             gvCargos.BackgroundColor = SystemColors.GradientActiveCaption;
             gvCargos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gvCargos.Columns.AddRange(new DataGridViewColumn[] { Delete });
             gvCargos.GridColor = SystemColors.GradientActiveCaption;
             gvCargos.Location = new Point(12, 153);
             gvCargos.Name = "gvCargos";
@@ -110,6 +113,16 @@
             gvCargos.Size = new Size(776, 272);
             gvCargos.TabIndex = 4;
             gvCargos.CellMouseClick += gvCargos_CellMouseClick;
+            // 
+            // Delete
+            // 
+            Delete.FlatStyle = FlatStyle.Flat;
+            Delete.HeaderText = "Ação";
+            Delete.Name = "Delete";
+            Delete.ReadOnly = true;
+            Delete.Text = "Excluir";
+            Delete.ToolTipText = "Deleta o registro permanentemente";
+            Delete.UseColumnTextForButtonValue = true;
             // 
             // label1
             // 
@@ -171,5 +184,6 @@
         private DataGridView gvCargos;
         private Label label1;
         private Button btnRecarregar;
+        private DataGridViewButtonColumn Delete;
     }
 }

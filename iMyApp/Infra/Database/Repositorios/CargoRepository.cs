@@ -4,6 +4,7 @@ using Negocio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Database.Repositorios
         {
             try
             {
-             
+
 
 
                 var sql = @"INSERT INTO [dbo].[Cargo]
@@ -34,7 +35,7 @@ namespace Database.Repositorios
                  @AlteradoPor,
                  @AlteradoEm)";
 
-                using ( var connection = new SqlConnection(SqlServer.StrConexaoHardCore()))
+                using (var connection = new SqlConnection(SqlServer.StrConexaoHardCore()))
                 {
                     connection.Open();
                     var cmd = new SqlCommand(sql, connection);
@@ -48,11 +49,11 @@ namespace Database.Repositorios
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;
                 }
-              
-               
+
+
 
             }
-            catch (Exception) 
+            catch (Exception)
             {
                 throw;
             }
@@ -60,9 +61,9 @@ namespace Database.Repositorios
 
 
 
-           
+
         }
-        public bool Atualizar(Cargo cargo,int id)
+        public bool Atualizar(Cargo cargo, int id)
         {
             try
             {
@@ -104,14 +105,15 @@ namespace Database.Repositorios
 
 
                 var sql = @"            
-            DELETE FROM[dbo].[Cargo]
-            WHERE < Search Conditions,,>";
+                            DELETE FROM[dbo].[Cargo]
+                            WHERE Id = @id";
 
                 using (var connection = new SqlConnection(SqlServer.StrConexaoHardCore()))
                 {
+                    connection.Open();
                     var cmd = new SqlCommand(sql, connection);
                     cmd.Parameters.AddWithValue("@Id", cargoId);
-                    
+
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;
                 }
@@ -119,9 +121,9 @@ namespace Database.Repositorios
 
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
 
         }
@@ -136,7 +138,7 @@ namespace Database.Repositorios
                 {
                     connection.Open();
                     var cmd = connection.CreateCommand();
-                   
+
                     cmd.CommandText = sql;
 
                     dataAdapter = new SqlDataAdapter(cmd.CommandText, connection);
@@ -162,6 +164,37 @@ namespace Database.Repositorios
             //,[AlteradoEm]
             //      FROM[dbo].[Cargo]
         }
-    }
 
+        public List<string> Complemento(string cargo)
+        {
+            var sql = @"SELECT [Nome] FROM [dbo].[Cargo]";
+
+            try
+            {
+                using (var connection = new SqlConnection(SqlServer.StrConexaoHardCore()))
+                {
+                    connection.Open();
+                    SqlCommand com = new SqlCommand(sql, connection);
+
+                    SqlDataReader reader = com.ExecuteReader();
+
+                    var lista = new List<string>();
+
+                    while (reader.Read())
+                    {
+                        lista.Add(reader.GetString(0).Trim());
+                    }
+
+                    return lista;
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+    }
 }
+
+
