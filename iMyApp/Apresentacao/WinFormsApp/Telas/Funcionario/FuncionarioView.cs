@@ -20,8 +20,9 @@ namespace WinFormsApp.Telas.Cargos.Funcionario
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            //var criadoEm = DateTime.Now;
-            //var novoFuncionario = new Colaboradores(txtNomeCompleto.Text, txtCpf.Text, dtpdataDeNascimento, txtEmail.Text, chkAtivo.Checked, criadoEm, txtNomeCompleto.Text);
+            var criadoEm = DateTime.Now;
+            var novoFuncionario = new Colaboradores(txtNomeCompleto.Text, txtCpf.Text,
+            DateTime.Parse(dtpdataDeNascimento.Text), txtEmail.Text, chkAtivo.Checked, criadoEm, txtNomeCompleto.Text);
         }
     }
 }
