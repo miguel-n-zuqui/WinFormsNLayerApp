@@ -8,28 +8,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WinFormsApp.Telas;
 
-namespace WinFormsApp.Telas.Clientes
+namespace WinFormsApp.Telas.Cargos.Funcionario
 {
-    public partial class ClientesCadastrar : Form
+    public partial class FuncionarioView : Form
     {
-        //construtor
-        public ClientesCadastrar()//metodo porque tem o ()
+        public FuncionarioView()
         {
-
             InitializeComponent();
-
-            var cliente = new Cliente();
-
-            var colaborador = new Colaboradores();
-
-
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-           
+            //var criadoEm = DateTime.Now;
+            //var novoFuncionario = new Colaboradores(txtNomeCompleto.Text, txtCpf.Text, dtpdataDeNascimento, txtEmail.Text, chkAtivo.Checked, criadoEm, txtNomeCompleto.Text);
         }
     }
 }
