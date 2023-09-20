@@ -13,6 +13,7 @@ namespace Database.Repositorios
 {
     internal class ColaboradoresRepository
     {
+        
         public bool Inserir(Colaboradores colaborador)
         {
             try
@@ -88,8 +89,7 @@ namespace Database.Repositorios
                     cmd.Parameters.AddWithValue("@Nacionalidade", colaborador.Nacionalidade);
                     cmd.Parameters.AddWithValue("@EstadoCivil", colaborador.EstadoCivil);
                     cmd.Parameters.AddWithValue("@Rg", colaborador.Rg);
-
-                    cmd.Parameters.AddWithValue("@DataDeAdimissao", colaborador.DataDeAdimissao);
+                    cmd.Parameters.AddWithValue("@DataDeAdimissao", colaborador.DataAdmissao);
 
                     var resposta = cmd.ExecuteNonQuery();
                     return resposta == 1;

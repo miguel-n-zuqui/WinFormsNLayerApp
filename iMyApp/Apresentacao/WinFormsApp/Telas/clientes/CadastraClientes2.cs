@@ -22,7 +22,7 @@ namespace WinFormsApp.Telas.Clientes
 
             var cliente = new Cliente();
 
-            var colaborador = new Colaboradores();
+            //var colaborador = new Colaboradores();
 
 
         }
