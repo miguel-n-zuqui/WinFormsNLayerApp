@@ -19,7 +19,7 @@ namespace WinFormsApp
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 ApplicationConfiguration.Initialize();
-                Application.Run(new MDIPrincipal());
+                Application.Run(new CargoView());
             }
             catch (Exception)
             {

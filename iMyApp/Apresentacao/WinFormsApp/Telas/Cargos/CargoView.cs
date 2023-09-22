@@ -1,5 +1,6 @@
 ﻿using Database.Repositorios;
 using Negocio.Entidades;
+using Negocio.Validators;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,21 +25,31 @@ namespace WinFormsApp.Telas.Cargos
 
         private void btnNovoCargo_Click(object sender, EventArgs e)
         {
+            txtCargo.Clear();
             grupoBoxCargo.Visible = !grupoBoxCargo.Visible;
+            btnSalvar.Text = "Atualizar";
+           
         }
 
         private void tbnSalvar_Click(object sender, EventArgs e)
         {
 
-            Button botao = sender as Button;
+            Button? botao = sender as Button;
 
             var nome = txtCargo.Text;
             var status = chkStatus.Checked;
             var novoCargo = new Cargo(nome, status);
+
+
+            var erros = Validacoes.getValidationErros(novoCargo);
+            foreach ( var erro in erros ) { MessageBox.Show(erro.ErrorMessage); }
+
+
+
             var cargo = new CargoRepository();
             switch (botao.Text)
             {
-                case "Cadastrar":
+                case "Atualizar":
                     {
                         cargo.Inserir(novoCargo);
 
@@ -75,7 +86,6 @@ namespace WinFormsApp.Telas.Cargos
 
         private void btnRecarregar_Click(object sender, EventArgs e)
         {
-
             carregarCargos();
         }
 
@@ -97,12 +107,14 @@ namespace WinFormsApp.Telas.Cargos
 
             if (e.RowIndex >= 0)
             {
-                grupoBoxCargo.Show();
-                txtCargo.Text = row.Cells[2].Value.ToString();
-                chkStatus.Checked = Convert.ToBoolean(row.Cells[3].Value.ToString());
-
-
-                id = Convert.ToInt32(row.Cells[1].Value);
+                if (e.RowIndex >= 0)
+                {
+                    grupoBoxCargo.Show();
+                    btnSalvar.Text = "Atualizar";
+                    txtCargo.Text = row.Cells[2].Value.ToString();
+                    chkStatus.Checked = Convert.ToBoolean(row.Cells[3].Value.ToString());
+                    id = Convert.ToInt32(row.Cells[1].Value);
+                }
             }
 
         }
