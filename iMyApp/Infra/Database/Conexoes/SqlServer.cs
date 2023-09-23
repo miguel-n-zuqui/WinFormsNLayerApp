@@ -18,7 +18,7 @@ namespace Database.Conexoes
         internal static string StrConexaoHardCore()
         {
 
-            return "Server=.\\SQLEXPRESS;Database=iMyApp;User Id=sa;Password=sql2022;Trusted_Connection=False; TrustServerCertificate=True;";
+            return "Server=.\\SQLEXPRESS;Database=NorthWind;User Id=sa;Password=sql2022;Trusted_Connection=False; TrustServerCertificate=True;";
 
         }
 
