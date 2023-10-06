@@ -13,7 +13,7 @@ namespace Negocio.Entidades
 
         [Required(ErrorMessage = "O nome do usuário é obrigatório", AllowEmptyStrings = false)]
         [StringLength(50)]
-        [MinLength(5,ErrorMessage = "Nome muito curto")]
+        [MinLength(5,ErrorMessage = "Nome ewdwada muito curto")]
         public string Nome { get; set; }
         public bool Status { get; set; }
 
