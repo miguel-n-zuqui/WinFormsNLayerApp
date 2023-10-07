@@ -179,7 +179,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(540, 368);
+            ClientSize = new Size(557, 380);
             Controls.Add(btnSalvar);
             Controls.Add(chkEhResponsavel);
             Controls.Add(label5);

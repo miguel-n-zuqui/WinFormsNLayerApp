@@ -1,4 +1,6 @@
+using Negocio.Entidades;
 using WinFormsApp.Telas.Cargos;
+using WinFormsApp.Telas.clientes.fonecedores;
 using WinFormsApp.Telas.Clientes;
 
 namespace WinFormsApp
@@ -19,7 +21,7 @@ namespace WinFormsApp
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 ApplicationConfiguration.Initialize();
-                Application.Run(new CargoView());
+                Application.Run(new FornecedorView());
             }
             catch (Exception)
             {

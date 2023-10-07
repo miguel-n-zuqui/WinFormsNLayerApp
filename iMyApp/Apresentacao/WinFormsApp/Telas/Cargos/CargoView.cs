@@ -1,5 +1,6 @@
-﻿using Database.Repositorios;
+﻿
 using Negocio.Entidades;
+using Negocio.Repository;
 using Negocio.Validators;
 using System;
 using System.Collections.Generic;
@@ -18,9 +19,12 @@ namespace WinFormsApp.Telas.Cargos
     public partial class CargoView : Form
     {
         int id = -1;
-        public CargoView()
+
+        private readonly ICargoRepository _cargoRepository;
+        public CargoView(ICargoRepository cargoRepository)
         {
             InitializeComponent();
+            _cargoRepository = cargoRepository;
         }
 
         private void btnNovoCargo_Click(object sender, EventArgs e)
@@ -46,14 +50,13 @@ namespace WinFormsApp.Telas.Cargos
 
 
 
-            var cargo = new CargoRepository();
             switch (botao.Text)
             {
                 case "Atualizar":
                     {
-                        cargo.Inserir(novoCargo);
+                        _cargoRepository.Incluir(novoCargo);
 
-                        var resultado = cargo.Inserir(novoCargo);
+                        var resultado = _cargoRepository.Incluir(novoCargo);
 
                         if (resultado)
                         {
@@ -68,7 +71,7 @@ namespace WinFormsApp.Telas.Cargos
                     }
                 case "Salvar":
                     {
-                        cargo.Atualizar(novoCargo, id);
+                        //_cargoRepository.Atualizar(novoCargo, id);
                         MessageBox.Show("Cargo alterado com sucesso!!");
                         //cadastar
                         break;
@@ -91,7 +94,6 @@ namespace WinFormsApp.Telas.Cargos
 
         private void gvCargos_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            var cargoRepository = new CargoRepository();
             DataGridViewRow row = gvCargos.Rows[e.RowIndex];
 
             if (gvCargos.Columns[e.ColumnIndex].Name == "Delete")
@@ -99,7 +101,7 @@ namespace WinFormsApp.Telas.Cargos
                 if (MessageBox.Show("Deseja realmente deletar o registro?",
                     "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    var resultado = cargoRepository.Deletar(int.Parse(row.Cells[1].Value.ToString()));
+                    var resultado = _cargoRepository.Deletar(int.Parse(row.Cells[1].Value.ToString()));
                     MessageBox.Show("Deletado com sucesso");
                 };
                 return;
@@ -120,25 +122,23 @@ namespace WinFormsApp.Telas.Cargos
         }
         private void carregarCargos()
         {
-            var cargoRepository = new CargoRepository();
-            var dataTable = cargoRepository.ObterTodos();
+            var dataTable = _cargoRepository.ObterTodos();
             gvCargos.DataSource = dataTable;
         }
 
         private void txtCargo_TextChanged(object sender, EventArgs e)
         {
             var nome = txtCargo.Text;
-            var cargo = new CargoRepository();
 
-            var reader = cargo.Complemento(nome);
+            //var reader = _cargoRepository.Complemento(nome);
 
             AutoCompleteStringCollection autoCompleteStringCollection = new AutoCompleteStringCollection();
 
 
-            foreach (var i in reader)
-            {
-                autoCompleteStringCollection.Add(i);
-            }
+            //foreach (var i in reader)
+            //{
+            //    autoCompleteStringCollection.Add(i);
+            //}
 
             txtCargo.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtCargo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
