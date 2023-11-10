@@ -2,7 +2,7 @@ using Negocio.Entidades;
 using WinFormsApp.Telas.Cargos;
 using WinFormsApp.Telas.clientes.fonecedores;
 using WinFormsApp.Telas.Clientes;
-
+using WinFormsApp.Telas.clientes.Usuario;
 namespace WinFormsApp
 {
     internal static class Program
@@ -21,7 +21,7 @@ namespace WinFormsApp
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 ApplicationConfiguration.Initialize();
-                Application.Run(new FornecedorView());
+                Application.Run(new frmUsuario());
             }
             catch (Exception)
             {
