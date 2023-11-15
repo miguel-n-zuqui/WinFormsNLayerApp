@@ -30,7 +30,7 @@
         {
             label1 = new Label();
             txtFrom = new TextBox();
-            txtTO = new TextBox();
+            txtTo = new TextBox();
             label2 = new Label();
             label3 = new Label();
             txtSubject = new TextBox();
@@ -55,12 +55,12 @@
             txtFrom.Size = new Size(261, 23);
             txtFrom.TabIndex = 1;
             // 
-            // txtTO
+            // txtTo
             // 
-            txtTO.Location = new Point(154, 155);
-            txtTO.Name = "txtTO";
-            txtTO.Size = new Size(261, 23);
-            txtTO.TabIndex = 2;
+            txtTo.Location = new Point(154, 155);
+            txtTo.Name = "txtTo";
+            txtTo.Size = new Size(261, 23);
+            txtTo.TabIndex = 2;
             // 
             // label2
             // 
@@ -125,7 +125,7 @@
             Controls.Add(label3);
             Controls.Add(txtSubject);
             Controls.Add(label2);
-            Controls.Add(txtTO);
+            Controls.Add(txtTo);
             Controls.Add(txtFrom);
             Controls.Add(label1);
             Name = "frmUsuario";
@@ -138,7 +138,7 @@
 
         private Label label1;
         private TextBox txtFrom;
-        private TextBox txtTO;
+        private TextBox txtTo;
         private Label label2;
         private Label label3;
         private TextBox txtSubject;

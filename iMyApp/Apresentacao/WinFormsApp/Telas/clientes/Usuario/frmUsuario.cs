@@ -20,8 +20,8 @@ namespace WinFormsApp.Telas.clientes.Usuario
 
         private void btnEnviar_Click(object sender, EventArgs e)
         {
-            var enviarEmail = new EmailService("miguel.zuqui@es.estudante.senai.br", "miguelzuqui19@gmail.com", txtSubject.Text, txtMenssage.Text);
-            enviarEmail.EnviarEmail();
+            var emailService = new EmailService(txtFrom.Text, txtTo.Text, txtSubject.Text,txtMenssage.Text);
+            emailService.EmailRecuperar("miguelnatalezuqui@gmail.com");//miguel.zuqui@es.estudante.senai.br
         }
     }
 }
